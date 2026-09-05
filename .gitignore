@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets / data (nothing here should ever contain these, but belt-and-suspenders)
+.env
+*.db
+*.sqlite

@@ -1,0 +1,29 @@
+{
+  "h5": {
+    "full_excess": 0.00082,
+    "full_t": 2.921,
+    "test_excess": 0.00108,
+    "test_t": 2.093,
+    "test_ic": 0.03652,
+    "coverage": 0.2684,
+    "n_dates": 2586
+  },
+  "h10": {
+    "full_excess": 0.00214,
+    "full_t": 5.31,
+    "test_excess": 0.00319,
+    "test_t": 4.528,
+    "test_ic": 0.04851,
+    "coverage": 0.2684,
+    "n_dates": 2581
+  },
+  "h20": {
+    "full_excess": 0.00427,
+    "full_t": 7.083,
+    "test_excess": 0.00756,
+    "test_t": 7.371,
+    "test_ic": 0.06396,
+    "coverage": 0.2685,
+    "n_dates": 2571
+  }
+}

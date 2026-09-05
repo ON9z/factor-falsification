@@ -1,0 +1,528 @@
+{
+  "inst_net(基线,机构only)": {
+    "full": {
+      "n_dates": 2554,
+      "n_stock_days": 41719,
+      "excess_per_horizon": 0.012714493163644666,
+      "excess_t": 18.88277298672593,
+      "excess_std": 0.03402857221076865,
+      "excess_skew": 1.2788625033077161,
+      "excess_kurt": 6.583966819116274,
+      "ic_mean": 0.0038436472407092632,
+      "ic_ir": 0.035336658981651316,
+      "coverage": 0.03724099967843795,
+      "win_rate": 0.6433046202036022,
+      "top_ret": 0.008692655755971848,
+      "bench_ret": -0.004021837407672818,
+      "cost_top": 0.003441829129334545,
+      "excess_net_per_horizon": 0.009272664034310122,
+      "coverage_min": 0.012618296529968454,
+      "coverage_std": 0.01291820436354284,
+      "excess_neutral_per_horizon": 0.010170356965042223,
+      "excess_neutral_t": 15.906287926875134,
+      "excess_net_neutral_per_horizon": 0.006751491565385083
+    },
+    "train": {
+      "n_dates": 1532,
+      "n_stock_days": 20100,
+      "excess_per_horizon": 0.01699938474813981,
+      "excess_t": 17.050810260397924,
+      "excess_std": 0.039022722398090806,
+      "excess_skew": 1.1821742995881814,
+      "excess_kurt": 5.430639145773763,
+      "ic_mean": 0.009924247720509457,
+      "ic_ir": 0.08361851453671457,
+      "coverage": 0.03563425084725585,
+      "win_rate": 0.6586161879895561,
+      "top_ret": 0.014797088238427378,
+      "bench_ret": -0.0022022965097124327,
+      "cost_top": 0.0036421147621872926,
+      "excess_net_per_horizon": 0.013357269985952519,
+      "coverage_min": 0.012744265080713678,
+      "coverage_std": 0.01208753975178734,
+      "excess_neutral_per_horizon": 0.013386085297158309,
+      "excess_neutral_t": 14.304051018973652,
+      "excess_net_neutral_per_horizon": 0.009841431726081198
+    },
+    "test": {
+      "n_dates": 1022,
+      "n_stock_days": 21619,
+      "excess_per_horizon": 0.006291348440115742,
+      "excess_t": 8.629841638256813,
+      "excess_std": 0.023305925853971402,
+      "excess_skew": 0.15048440535257532,
+      "excess_kurt": 3.5277926592804087,
+      "ic_mean": -0.00527130377206363,
+      "ic_ir": -0.057778621961584835,
+      "coverage": 0.039649550763928135,
+      "win_rate": 0.6203522504892368,
+      "top_ret": -0.00045801994179906196,
+      "bench_ret": -0.006749368381914803,
+      "cost_top": 0.0031415966542558656,
+      "excess_net_per_horizon": 0.003149751785859876,
+      "coverage_min": 0.012618296529968454,
+      "coverage_std": 0.013729888290906838,
+      "excess_neutral_per_horizon": 0.00534991097208543,
+      "excess_neutral_t": 7.2259846600109405,
+      "excess_net_neutral_per_horizon": 0.0021196047491556795
+    },
+    "stability": {
+      "chunks": [
+        0.03333,
+        0.00712,
+        0.00371,
+        0.00671
+      ],
+      "sign_consistent_frac": 1.0
+    },
+    "factor": "inst_net(基线,机构only)",
+    "params": {
+      "days": 10
+    },
+    "direction": "high",
+    "selection": 0.1,
+    "horizon_days": 5,
+    "available_since": "2016-01-04",
+    "trial_index": 94,
+    "neutralize": "sector,size",
+    "p_value_permuted": 0.0099,
+    "net_of_friction": 0.003,
+    "cost_model": {
+      "base": 0.002,
+      "illiq": 0.002,
+      "cap": 0.015
+    },
+    "missing_audit": {
+      "size_ratio_mean": 0.9207396899865075,
+      "size_ratio_p10": 0.6411899665225067,
+      "size_ratio_p90": 1.20347220455488,
+      "st_ratio_mean": 1.1178685671615136,
+      "industry_top_missing_rate": 0.08885654703237468,
+      "industry_top": "机械设备"
+    },
+    "data_contract": {
+      "checks": [
+        {
+          "contract": "时点宇宙(无退市后残留)",
+          "pass": true,
+          "detail": "残留 0/11102650 行"
+        },
+        {
+          "contract": "价格健全(无负值/inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        },
+        {
+          "contract": "因子值有限(无inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        }
+      ],
+      "notes": [],
+      "all_pass": true,
+      "note": "硬闸=数据bug(时点宇宙/价格/因子非有限); 覆盖类未声明缺陷由 gate8/9 测量审计兜底"
+    },
+    "neutralized_test_excess": 0.00534991097208543,
+    "neutralized_test_t": 7.2259846600109405,
+    "verdict": {
+      "verdict": "FAIL",
+      "failed_gates": [
+        "覆盖>=20%(非覆盖子集因子)"
+      ],
+      "dsr": 0.9999999994478233,
+      "trial_count": 94,
+      "gates": [
+        {
+          "gate": "test超额>0且|t|>=2",
+          "pass": true
+        },
+        {
+          "gate": "test动态成本后净超额>0",
+          "pass": true
+        },
+        {
+          "gate": "train/test同号",
+          "pass": true
+        },
+        {
+          "gate": "子区间符号一致>=0.75",
+          "pass": true
+        },
+        {
+          "gate": "置换p<0.05",
+          "pass": true
+        },
+        {
+          "gate": "DSR>=0.95(去膨胀,T=94)",
+          "pass": true
+        },
+        {
+          "gate": "覆盖>=20%(非覆盖子集因子)",
+          "pass": false
+        },
+        {
+          "gate": "缺失机制随机(覆盖子集无系统偏倚)",
+          "pass": true
+        },
+        {
+          "gate": "数据契约(时点宇宙/价格健全/因子有限)",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "hot_north(游资+北向)": {
+    "full": {
+      "n_dates": 2555,
+      "n_stock_days": 73906,
+      "excess_per_horizon": 0.00941565559849734,
+      "excess_t": 14.502299596295373,
+      "excess_std": 0.032817775832646744,
+      "excess_skew": 1.8481157190656115,
+      "excess_kurt": 8.820862371300352,
+      "ic_mean": 0.0057354359550870395,
+      "ic_ir": 0.07173359445182813,
+      "coverage": 0.06894921562215867,
+      "win_rate": 0.5726027397260274,
+      "top_ret": 0.003653290958057216,
+      "bench_ret": -0.005762364640440122,
+      "cost_top": 0.004226300656782199,
+      "excess_net_per_horizon": 0.005189354941715141,
+      "coverage_min": 0.009506398537477149,
+      "coverage_std": 0.01721966456548299,
+      "excess_neutral_per_horizon": 0.008581803602272021,
+      "excess_neutral_t": 13.980560911466805,
+      "excess_net_neutral_per_horizon": 0.004306349202961948
+    },
+    "train": {
+      "n_dates": 1533,
+      "n_stock_days": 40792,
+      "excess_per_horizon": 0.017789661026321454,
+      "excess_t": 18.636403522075558,
+      "excess_std": 0.037374607882428,
+      "excess_skew": 1.612711897063666,
+      "excess_kurt": 6.635002875285532,
+      "ic_mean": 0.01655280335898135,
+      "ic_ir": 0.19710353385684448,
+      "coverage": 0.07406062189676245,
+      "win_rate": 0.6686236138290933,
+      "top_ret": 0.012893131404825722,
+      "bench_ret": -0.004896529621495729,
+      "cost_top": 0.004630870279771016,
+      "excess_net_per_horizon": 0.013158790746550436,
+      "coverage_min": 0.04858022579541567,
+      "coverage_std": 0.012579284568168602,
+      "excess_neutral_per_horizon": 0.01628639944051443,
+      "excess_neutral_t": 18.261703536362237,
+      "excess_net_neutral_per_horizon": 0.01169243931183319
+    },
+    "test": {
+      "n_dates": 1022,
+      "n_stock_days": 33114,
+      "excess_per_horizon": -0.003145352543238833,
+      "excess_t": -5.494615516582331,
+      "excess_std": 0.01830026883082313,
+      "excess_skew": -0.307338556902797,
+      "excess_kurt": 5.391967889419769,
+      "ic_mean": -0.010490615150754418,
+      "ic_ir": -0.14881351190210615,
+      "coverage": 0.061282106210252964,
+      "win_rate": 0.42857142857142855,
+      "top_ret": -0.010206469712095542,
+      "bench_ret": -0.0070611171688567086,
+      "cost_top": 0.0036194462222989715,
+      "excess_net_per_horizon": -0.006764798765537804,
+      "coverage_min": 0.009506398537477149,
+      "coverage_std": 0.020154960114183003,
+      "excess_neutral_per_horizon": -0.0029750901550915894,
+      "excess_neutral_t": -5.041921710030916,
+      "excess_net_neutral_per_horizon": -0.006772785960344917
+    },
+    "stability": {
+      "chunks": [
+        0.03975,
+        0.00348,
+        -0.00231,
+        -0.00322
+      ],
+      "sign_consistent_frac": 0.5
+    },
+    "factor": "hot_north(游资+北向)",
+    "params": {
+      "days": 10
+    },
+    "direction": "high",
+    "selection": 0.1,
+    "horizon_days": 5,
+    "available_since": "2016-01-04",
+    "trial_index": 95,
+    "neutralize": "sector,size",
+    "p_value_permuted": 0.0099,
+    "net_of_friction": 0.003,
+    "cost_model": {
+      "base": 0.002,
+      "illiq": 0.002,
+      "cap": 0.015
+    },
+    "missing_audit": {
+      "size_ratio_mean": 1.1621103308624536,
+      "size_ratio_p10": 0.867858008970251,
+      "size_ratio_p90": 1.4213127395732694,
+      "st_ratio_mean": 0.7893387037948216,
+      "industry_top_missing_rate": 0.08938816439507447,
+      "industry_top": "机械设备"
+    },
+    "data_contract": {
+      "checks": [
+        {
+          "contract": "时点宇宙(无退市后残留)",
+          "pass": true,
+          "detail": "残留 0/11102650 行"
+        },
+        {
+          "contract": "价格健全(无负值/inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        },
+        {
+          "contract": "因子值有限(无inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        }
+      ],
+      "notes": [],
+      "all_pass": true,
+      "note": "硬闸=数据bug(时点宇宙/价格/因子非有限); 覆盖类未声明缺陷由 gate8/9 测量审计兜底"
+    },
+    "neutralized_test_excess": -0.0029750901550915894,
+    "neutralized_test_t": -5.041921710030916,
+    "verdict": {
+      "verdict": "FAIL",
+      "failed_gates": [
+        "test超额>0且|t|>=2",
+        "test动态成本后净超额>0",
+        "train/test同号",
+        "子区间符号一致>=0.75",
+        "DSR>=0.95(去膨胀,T=95)",
+        "覆盖>=20%(非覆盖子集因子)"
+      ],
+      "dsr": 3.885780586188048e-16,
+      "trial_count": 95,
+      "gates": [
+        {
+          "gate": "test超额>0且|t|>=2",
+          "pass": false
+        },
+        {
+          "gate": "test动态成本后净超额>0",
+          "pass": false
+        },
+        {
+          "gate": "train/test同号",
+          "pass": false
+        },
+        {
+          "gate": "子区间符号一致>=0.75",
+          "pass": false
+        },
+        {
+          "gate": "置换p<0.05",
+          "pass": true
+        },
+        {
+          "gate": "DSR>=0.95(去膨胀,T=95)",
+          "pass": false
+        },
+        {
+          "gate": "覆盖>=20%(非覆盖子集因子)",
+          "pass": false
+        },
+        {
+          "gate": "缺失机制随机(覆盖子集无系统偏倚)",
+          "pass": true
+        },
+        {
+          "gate": "数据契约(时点宇宙/价格健全/因子有限)",
+          "pass": true
+        }
+      ]
+    }
+  },
+  "smart(机构+游资+北向)": {
+    "full": {
+      "n_dates": 2555,
+      "n_stock_days": 73906,
+      "excess_per_horizon": 0.011069805144622902,
+      "excess_t": 16.815491057752347,
+      "excess_std": 0.03327559839543777,
+      "excess_skew": 1.848857547167285,
+      "excess_kurt": 8.910367125192376,
+      "ic_mean": 0.002327486341002159,
+      "ic_ir": 0.026509603697695606,
+      "coverage": 0.06894921562215867,
+      "win_rate": 0.5956947162426615,
+      "top_ret": 0.0053074405041827815,
+      "bench_ret": -0.005762364640440122,
+      "cost_top": 0.004153705770496751,
+      "excess_net_per_horizon": 0.0069160993741261495,
+      "coverage_min": 0.009506398537477149,
+      "coverage_std": 0.01721966456548299,
+      "excess_neutral_per_horizon": 0.010305645439141219,
+      "excess_neutral_t": 16.466121635076373,
+      "excess_net_neutral_per_horizon": 0.006092479519064491
+    },
+    "train": {
+      "n_dates": 1533,
+      "n_stock_days": 40792,
+      "excess_per_horizon": 0.019239111596719167,
+      "excess_t": 19.856915076553303,
+      "excess_std": 0.03793536899424977,
+      "excess_skew": 1.6185678646051909,
+      "excess_kurt": 6.817298202958568,
+      "ic_mean": 0.013520460765916648,
+      "ic_ir": 0.1493087802783265,
+      "coverage": 0.07406062189676245,
+      "win_rate": 0.6777560339204175,
+      "top_ret": 0.014342581975223437,
+      "bench_ret": -0.004896529621495729,
+      "cost_top": 0.004561862800142911,
+      "excess_net_per_horizon": 0.014677248796576257,
+      "coverage_min": 0.04858022579541567,
+      "coverage_std": 0.012579284568168602,
+      "excess_neutral_per_horizon": 0.018110434030380953,
+      "excess_neutral_t": 19.728633060598412,
+      "excess_net_neutral_per_horizon": 0.013578238544085536
+    },
+    "test": {
+      "n_dates": 1022,
+      "n_stock_days": 33114,
+      "excess_per_horizon": -0.0011841545335214982,
+      "excess_t": -1.9953588723566378,
+      "excess_std": 0.01897198678470014,
+      "excess_skew": -0.12710324191365507,
+      "excess_kurt": 4.188395684433719,
+      "ic_mean": -0.01446197529636958,
+      "ic_ir": -0.1792651134531997,
+      "coverage": 0.061282106210252964,
+      "win_rate": 0.4726027397260274,
+      "top_ret": -0.008245271702378206,
+      "bench_ret": -0.0070611171688567086,
+      "cost_top": 0.0035414702260275115,
+      "excess_net_per_horizon": -0.004725624759549011,
+      "coverage_min": 0.009506398537477149,
+      "coverage_std": 0.020154960114183003,
+      "excess_neutral_per_horizon": -0.0014015374477183767,
+      "excess_neutral_t": -2.4425100897579815,
+      "excess_net_neutral_per_horizon": -0.005136159018467075
+    },
+    "stability": {
+      "chunks": [
+        0.0411,
+        0.00579,
+        -0.00143,
+        -0.00114
+      ],
+      "sign_consistent_frac": 0.5
+    },
+    "factor": "smart(机构+游资+北向)",
+    "params": {
+      "days": 10
+    },
+    "direction": "high",
+    "selection": 0.1,
+    "horizon_days": 5,
+    "available_since": "2016-01-04",
+    "trial_index": 96,
+    "neutralize": "sector,size",
+    "p_value_permuted": 0.0099,
+    "net_of_friction": 0.003,
+    "cost_model": {
+      "base": 0.002,
+      "illiq": 0.002,
+      "cap": 0.015
+    },
+    "missing_audit": {
+      "size_ratio_mean": 1.1621103308624536,
+      "size_ratio_p10": 0.867858008970251,
+      "size_ratio_p90": 1.4213127395732694,
+      "st_ratio_mean": 0.7893387037948216,
+      "industry_top_missing_rate": 0.08938816439507447,
+      "industry_top": "机械设备"
+    },
+    "data_contract": {
+      "checks": [
+        {
+          "contract": "时点宇宙(无退市后残留)",
+          "pass": true,
+          "detail": "残留 0/11102650 行"
+        },
+        {
+          "contract": "价格健全(无负值/inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        },
+        {
+          "contract": "因子值有限(无inf)",
+          "pass": true,
+          "detail": "违规 0 行"
+        }
+      ],
+      "notes": [],
+      "all_pass": true,
+      "note": "硬闸=数据bug(时点宇宙/价格/因子非有限); 覆盖类未声明缺陷由 gate8/9 测量审计兜底"
+    },
+    "neutralized_test_excess": -0.0014015374477183767,
+    "neutralized_test_t": -2.4425100897579815,
+    "verdict": {
+      "verdict": "FAIL",
+      "failed_gates": [
+        "test超额>0且|t|>=2",
+        "test动态成本后净超额>0",
+        "train/test同号",
+        "子区间符号一致>=0.75",
+        "DSR>=0.95(去膨胀,T=96)",
+        "覆盖>=20%(非覆盖子集因子)"
+      ],
+      "dsr": 3.159553250031699e-06,
+      "trial_count": 96,
+      "gates": [
+        {
+          "gate": "test超额>0且|t|>=2",
+          "pass": false
+        },
+        {
+          "gate": "test动态成本后净超额>0",
+          "pass": false
+        },
+        {
+          "gate": "train/test同号",
+          "pass": false
+        },
+        {
+          "gate": "子区间符号一致>=0.75",
+          "pass": false
+        },
+        {
+          "gate": "置换p<0.05",
+          "pass": true
+        },
+        {
+          "gate": "DSR>=0.95(去膨胀,T=96)",
+          "pass": false
+        },
+        {
+          "gate": "覆盖>=20%(非覆盖子集因子)",
+          "pass": false
+        },
+        {
+          "gate": "缺失机制随机(覆盖子集无系统偏倚)",
+          "pass": true
+        },
+        {
+          "gate": "数据契约(时点宇宙/价格健全/因子有限)",
+          "pass": true
+        }
+      ]
+    }
+  }
+}
